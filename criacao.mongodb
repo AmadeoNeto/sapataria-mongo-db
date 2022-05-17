@@ -1,5 +1,11 @@
 //Cria o banco de dados
-use sapatariaDB
+use("sapatariaDB");
+
+db.calcados.drop();
+
+db.vendedor.drop();
+
+db.venda.drop();
 
 // Cria a coleção de calçados
 db.calcados.insertOne({
@@ -10,7 +16,7 @@ db.calcados.insertOne({
     tamanho: "37", 
     quantidadeEstoque: "20", 
     preco: "199,90"
-})
+});
 
 /*
 Código ( 3 primeiras letras do tipo + 
@@ -353,7 +359,7 @@ db.calcados.insertMany([
         quantidadeEstoque: 10,
         preco: 450.00
     }
-])
+]);
 
 
 
@@ -462,7 +468,7 @@ db.vendedor.insertMany([
         numeroDeVendasNoMes: 0,
         salario: 2000.00
     }
-])
+]);
 
 // Cria a coleção de VENDA
 db.venda.insertMany([
@@ -487,7 +493,7 @@ db.venda.insertMany([
         valorCompra: 2000,
         dataHoraVenda: new Date(Date.now())
     }
-])
+]);
 
 /*
 iterar sobre os records de venda pra atalizar sobre o atributo
