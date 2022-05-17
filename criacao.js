@@ -483,8 +483,8 @@ db.venda.insertMany([
             {codigo: "teolae42", quantidadeVendida: 1}
         ],
         cpfCliente: "321",
-        cpfVendedor: "",
-        valorCompra: ,
+        cpfVendedor: "002",
+        valorCompra: 2000,
         dataHoraVenda: new Date(Date.now())
     }
 ])
