@@ -21,6 +21,15 @@ Código ( 3 primeiras letras do tipo +
 
 db.calcados.insertMany([
     {
+        codigo: "tenalco37", 
+        tipo: "tenis", 
+        marca: "all star", 
+        modelo: "converse chuck taylor", 
+        tamanho: "37", 
+        quantidadeEstoque: "20", 
+        preco: "199,90"
+    },
+    {
         codigo: "menimep",
         tipo: "meia",
         marca: "nike",
