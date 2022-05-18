@@ -94,40 +94,27 @@ db.venda.aggregate([
 db.venda.updateMany({cpfCliente: null}, {$unset: {cpfCliente: null}});
 db.venda.find({cpfCliente: {$exists: false}}).pretty();
 
-// FILTER, AVG
-// Retorna quantidade de itens vendidos em compras onde a qt vendida foi maior que a média
-db.venda.aggregate([
-    {
+//// FILTER, AVG
+// Retorna o código e a quantidade de produtos vendidos nas quais algum item foi vendido 
+// mais do que a média de itens vendidos
+    db.venda.aggregate([
+        {
         $project: {
-            _id: 0,
-            produtosVendidos:{
-                $filter:{
-                    input:"$produtosVendidos",
-                    as: "item",
-                    cond: {$and: [
-                        {$gt:["$$item.quantidadeVendida",{$avg:"$produtosVendidos.quantidadeVendida"}]}, 
-                        {$ne: ["$produtosVendidos", "[]"]}
-                        ]}
+                _id:0,
+                produtosVendidos:{
+                    $filter:{
+                        input:"$produtosVendidos", as: "item",
+                        cond:{$gt:["$$item.quantidadeVendida",{$avg:"$produtosVendidos.quantidadeVendida"}]}
+                    }
                 }
             }
+        },
+        {
+        $match: {
+            "produtosVendidos.0": {$exists:true}
         }
-    }
-]);
-
-//
-
-db.venda.aggregate([
-    {
-    $project: {
-            produtosVendidos:{
-                $filter:{input:"$produtosVendidos", as: "item",
-                cond:{$gt:["$$item.quantidadeVendida",{$avg:"$produtosVendidos.quantidadeVendida"}]
-                }
-            }
         }
-    }
-    }
-]);
+    ]);
 
 // $WHERE AND FUNCTION
 // Listar as vendas que o James Bond fez
