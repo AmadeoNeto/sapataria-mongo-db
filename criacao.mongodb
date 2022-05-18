@@ -1,3 +1,4 @@
+//USE:
 //Cria o banco de dados
 use("sapatariaDB");
 
@@ -8,15 +9,15 @@ db.vendedor.drop();
 db.venda.drop();
 
 // Cria a coleção de calçados
-db.calcados.insertOne({
-    codigo: "tenalco37", 
-    tipo: "tenis", 
-    marca: "all star", 
-    modelo: "converse chuck taylor", 
-    tamanho: "37", 
-    quantidadeEstoque: "20", 
-    preco: "199,90"
-});
+// db.calcados.insertOne({
+//     codigo: "tenalco37", 
+//     tipo: "tenis", 
+//     marca: "all star", 
+//     modelo: "converse chuck taylor", 
+//     tamanho: "37", 
+//     quantidadeEstoque: "20", 
+//     preco: "199,90"
+// });
 
 /*
 Código ( 3 primeiras letras do tipo + 
@@ -32,11 +33,11 @@ db.calcados.insertMany([
         marca: "all star", 
         modelo: "converse chuck taylor", 
         tamanho: "37", 
-        quantidadeEstoque: "20", 
-        preco: "199,90"
+        quantidadeEstoque: 20, 
+        preco: 199.90
     },
     {
-        codigo: "menimep",
+        codigo: "meinimep",
         tipo: "meia",
         marca: "nike",
         modelo: "meia-perna",
@@ -54,7 +55,7 @@ db.calcados.insertMany([
         preco: 40.89
     },
     {
-        codigo: "sabzabe38",
+        codigo: "sanzabe38",
         tipo: "sandalia",
         marca: "zaxy",
         modelo: "be yourself",
@@ -63,7 +64,7 @@ db.calcados.insertMany([
         preco: 25.90
     },
     {
-        codigo: "christ38",
+        codigo: "chirist38",
         tipo: "chinelo",
         marca: "rider",
         modelo: "street slide",
@@ -72,7 +73,7 @@ db.calcados.insertMany([
         preco: 26.60
     },
     {
-        codigo: "pagrse42",
+        codigo: "papgrse42",
         tipo: "papete",
         marca: "grendene",
         modelo: "senninha",
@@ -81,7 +82,7 @@ db.calcados.insertMany([
         preco: 40.00
     },
     {
-        codigo: "teadsp41",
+        codigo: "tenadsp41",
         tipo: "tenis",
         marca: "adidas",
         modelo: "spring blade",
@@ -90,7 +91,7 @@ db.calcados.insertMany([
         preco: 999.90
     },
     {
-        codigo: "teadsp38",
+        codigo: "tenadsp38",
         tipo: "tenis",
         marca: "adidas",
         modelo: "spring blade",
@@ -99,7 +100,7 @@ db.calcados.insertMany([
         preco: 999.90
     },
     {
-        codigo: "meadmig",
+        codigo: "meiadmig",
         tipo: "meia",
         marca: "adidas",
         modelo: "milano",
@@ -108,7 +109,7 @@ db.calcados.insertMany([
         preco: 60.00
     },
     {
-        codigo: "meadmim",
+        codigo: "meiadmim",
         tipo: "meia",
         marca: "adidas",
         modelo: "milano",
@@ -117,7 +118,7 @@ db.calcados.insertMany([
         preco: 55.00
     },
     {
-        codigo: "meadmip",
+        codigo: "meiadmip",
         tipo: "meia",
         marca: "adidas",
         modelo: "milano",
@@ -180,7 +181,7 @@ db.calcados.insertMany([
         preco: 558.50
     }, 
     {
-        codigo: "chnica40",
+        codigo: "chunica40",
         tipo: "chuteira",
         marca: "nike",
         modelo: "Campo C/ Pinos",
@@ -189,7 +190,7 @@ db.calcados.insertMany([
         preco: 322.46
     }, 
     {
-        codigo: "chnica37",
+        codigo: "chunica37",
         tipo: "chuteira",
         marca: "nike",
         modelo: "Campo C/ Pinos",
@@ -198,7 +199,7 @@ db.calcados.insertMany([
         preco: 322.46
     }, 
     {
-        codigo: "chadqu37",
+        codigo: "chuadqu37",
         tipo: "chuteira",
         marca: "adidas",
         modelo: "Quadra S/ Pinos",
@@ -207,7 +208,7 @@ db.calcados.insertMany([
         preco: 277.33
     }, 
     {
-        codigo: "medacag",
+        codigo: "meidacag",
         tipo: "meia",
         marca: "dafiti",
         modelo: "cano longo",
@@ -216,7 +217,7 @@ db.calcados.insertMany([
         preco: 62.00
     },
     {
-        codigo: "mesusop",
+        codigo: "meisusop",
         tipo: "meia",
         marca: "supreme",
         modelo: "socket",
@@ -252,7 +253,7 @@ db.calcados.insertMany([
         preco: 48.90
     }, 
     {
-        codigo: "sahaun42",
+        codigo: "sanhaun42",
         tipo: "sandalia",
         marca: "havaianas",
         modelo: "unisex",
@@ -261,7 +262,7 @@ db.calcados.insertMany([
         preco: 17.77
     }, 
     {
-        codigo: "sahaun39",
+        codigo: "sanhaun39",
         tipo: "sandalia",
         marca: "havaianas",
         modelo: "unisex",
@@ -270,7 +271,7 @@ db.calcados.insertMany([
         preco: 15.77
     }, 
     {
-        codigo: "sahaun39",
+        codigo: "sanhaun42",
         tipo: "sandalia",
         marca: "havaianas",
         modelo: "unisex",
@@ -279,7 +280,7 @@ db.calcados.insertMany([
         preco: 41.77
     }, 
     {
-        codigo: "tejoma45",
+        codigo: "tenjoma45",
         tipo: "tenis",
         marca: "jordan nike",
         modelo: "Max Aura 3",
@@ -288,7 +289,7 @@ db.calcados.insertMany([
         preco: 759.99
     }, 
     {
-        codigo: "teolae44",
+        codigo: "tenolae44",
         tipo: "tenis",
         marca: "olympikus",
         modelo: "aeros",
@@ -297,7 +298,7 @@ db.calcados.insertMany([
         preco: 289.99
     }, 
     {
-        codigo: "teolae42",
+        codigo: "tenolae42",
         tipo: "tenis",
         marca: "olympikus",
         modelo: "aeros",
@@ -306,7 +307,7 @@ db.calcados.insertMany([
         preco: 299.99
     }, 
     {
-        codigo: "saipcl41",
+        codigo: "sanipcl41",
         tipo: "sandalia",
         marca: "ipanema",
         modelo: "class",
@@ -369,7 +370,6 @@ db.vendedor.insertMany([
         cpf: "001",
         nome: "Kisho Murakami Inoue",
         dataEntrada: new Date("2018-12-31"),
-        numeroDeVendasNoMes: 0,
         salario: 1500.00
     },
     
@@ -377,7 +377,6 @@ db.vendedor.insertMany([
         cpf: "002",
         nome: "Aozora Mitsuhide",
         dataEntrada: new Date("1982-01-02"),
-        numeroDeVendasNoMes: 0,
         salario: 3350.00
     },
     
@@ -385,7 +384,6 @@ db.vendedor.insertMany([
         cpf: "003",
         nome: "Claurêncio Roberto de Azevedo",
         dataEntrada: new Date("2014-04-25"),
-        numeroDeVendasNoMes: 0,
         salario: 1200.00
     },
 
@@ -393,7 +391,6 @@ db.vendedor.insertMany([
         cpf: "004",
         nome: "Tanji Hatsune",
         dataEntrada: new Date("2020-04-25"),
-        numeroDeVendasNoMes: 0,
         salario: 1400.00
     },
 
@@ -401,7 +398,6 @@ db.vendedor.insertMany([
         cpf: "005",
         nome: "Meliquiades Rosa e Silva",
         dataEntrada: new Date("2017-10-12"),
-        numeroDeVendasNoMes: 0,
         salario: 1400.00
     },
 
@@ -409,7 +405,6 @@ db.vendedor.insertMany([
         cpf: "006",
         nome: "Calisto Alberto Felônio",
         dataEntrada: new Date("2019-02-28"),
-        numeroDeVendasNoMes: 0,
         salario: 1450.00
     },
 
@@ -417,7 +412,6 @@ db.vendedor.insertMany([
         cpf: "007",
         nome: "James Bond",
         dataEntrada: new Date("1953-04-07"),
-        numeroDeVendasNoMes: 0,
         salario: 7777.77
     },
 
@@ -425,7 +419,6 @@ db.vendedor.insertMany([
         cpf: "008",
         nome: "Hiran Delmar",
         dataEntrada: new Date("2004-12-07"),
-        numeroDeVendasNoMes: 0,
         salario: 1380.00
     },
 
@@ -433,7 +426,6 @@ db.vendedor.insertMany([
         cpf: "009",
         nome: "João Alberto",
         dataEntrada: new Date("2003-12-08"),
-        numeroDeVendasNoMes: 0,
         salario: 1200.00
     },
 
@@ -441,7 +433,6 @@ db.vendedor.insertMany([
         cpf: "010",
         nome: "Kawada Manami",
         dataEntrada: new Date("1945-06-02"),
-        numeroDeVendasNoMes: 0,
         salario: 10000.00
     },
 
@@ -449,7 +440,6 @@ db.vendedor.insertMany([
         cpf: "011",
         nome: "Senor Firmino Olimar",
         dataEntrada: new Date("2009-10-04"),
-        numeroDeVendasNoMes: 0,
         salario: 999.99
     },
 
@@ -457,7 +447,6 @@ db.vendedor.insertMany([
         cpf: "012",
         nome: "Klaus Andrade Filho",
         dataEntrada: new Date("1955-12-24"),
-        numeroDeVendasNoMes: 0,
         salario: 1500.00
     },
 
@@ -465,7 +454,6 @@ db.vendedor.insertMany([
         cpf: "013",
         nome: "Orlando Uóshinton",
         dataEntrada: new Date("2012-05-28"),
-        numeroDeVendasNoMes: 0,
         salario: 2000.00
     }
 ]);
@@ -481,17 +469,236 @@ db.venda.insertMany([
         valorCompra: 199.90,
         dataHoraVenda: new Date(Date.now())
     },
-
     {
         produtosVendidos: [
             {codigo: "botcade40", quantidadeVendida: 1},
             {codigo: "bottigo38", quantidadeVendida: 1},
-            {codigo: "teolae42", quantidadeVendida: 1}
+            {codigo: "tenolae42", quantidadeVendida: 1}
         ],
         cpfCliente: "321",
         cpfVendedor: "002",
         valorCompra: 2000,
         dataHoraVenda: new Date(Date.now())
+    },
+    {
+        produtosVendidos: [
+            {codigo: "sanhaun39", quantidadeVendida: 1}
+        ],
+        cpfCliente: "499",
+        cpfVendedor: "013",
+        valorCompra: 15.77,
+        dataHoraVenda: new Date("2021-02-14T14:27:00")
+    },
+    {
+        produtosVendidos: [
+            {codigo: "chupufu40", quantidadeVendida: 5}
+        ],
+        cpfCliente: "444",
+        cpfVendedor: "008",
+        valorCompra: 2692.50,
+        dataHoraVenda: new Date("2020-01-14T10:20:00")
+    },
+    {
+        produtosVendidos: [
+            {codigo: "chihato33", quantidadeVendida: 3},
+            {codigo: "botcade36", quantidadeVendida: 2}
+        ],
+        cpfCliente: "290",
+        cpfVendedor: "004",
+        valorCompra: 1789.8,
+        dataHoraVenda: new Date("2021-10-08T10:05:28")
+    },
+    {
+        produtosVendidos: [
+            {codigo: "bottigo40", quantidadeVendida: 1},
+            {codigo: "bottigo38", quantidadeVendida: 1}
+        ],
+        cpfCliente: "468",
+        cpfVendedor: "011",
+        valorCompra: 870.00,
+        dataHoraVenda: new Date("2019-12-10T09:58:31")
+    },
+    {
+        produtosVendidos: [
+            {codigo: "sanhaun42", quantidadeVendida: 1},
+            {codigo: "tenmiin22", quantidadeVendida: 2},
+            {codigo: "chadqu37", quantidadeVendida: 1}
+        ],
+        cpfCliente: null,
+        cpfVendedor: "002",
+        valorCompra: 534.90,
+        dataHoraVenda: new Date("2019-11-07T09:58:31")
+    },
+    {
+        produtosVendidos: [
+            {codigo: "mesuop", quantidadeVendida: 1},
+            {codigo: "tenguac37", quantidadeVendida: 1},
+            {codigo: "medacag", quantidadeVendida: 1}
+        ],
+        cpfCliente: "087",
+        cpfVendedor: "007",
+        valorCompra: 9630.77,
+        dataHoraVenda: new Date("2000-08-05T17:09:20")
+    },
+    {
+        produtosVendidos: [
+            {codigo: "chihato33", quantidadeVendida: 1}
+        ],
+        cpfCliente: "925",
+        cpfVendedor: "001",
+        valorCompra: 30.00,
+        dataHoraVenda:  new Date("2021-05-17T19:48:44")
+    },
+    {
+        produtosVendidos: [
+            {codigo: "tenjoma45", quantidadeVendida: 1},
+            {codigo: "tenolae44", quantidadeVendida: 1},
+            {codigo: "medacag", quantidadeVendida: 2}
+        ],
+        cpfCliente: "210",
+        cpfVendedor: "002",
+        valorCompra: 1173.98,
+        dataHoraVenda: new Date("2010-06-18T20:13:18")
+    },
+    {
+        produtosVendidos: [
+            {codigo: "sanbeve35", quantidadeVendida: 1},
+            {codigo: "meiadmig", quantidadeVendida: 3}
+        ],
+        cpfCliente: "321",
+        cpfVendedor: "013",
+        valorCompra: 220.89,
+        dataHoraVenda: new Date("2020-12-24T11:11:11")
+    },
+    {
+        produtosVendidos: [
+            {codigo: "meiadmim", quantidadeVendida: 1},
+            {codigo: "chupufu38", quantidadeVendida: 1}
+        ],
+        cpfCliente: null,
+        cpfVendedor: "012",
+        valorCompra: 570.50,
+        dataHoraVenda: new Date("2019-12-24T17:3:21")
+    },
+    {
+        produtosVendidos: [
+            {codigo: "chirist38", quantidadeVendida: 4},
+            {codigo: "medacag", quantidadeVendida: 6}
+        ],
+        cpfCliente: "140",
+        cpfVendedor: "003",
+        valorCompra: 372,
+        dataHoraVenda: new Date("2022-04-28T18:40:01")
+    },
+    {
+        produtosVendidos: [
+            {codigo: "sanzabe38", quantidadeVendida: 1},
+            {codigo: "meiadmip", quantidadeVendida: 2}
+        ],
+        cpfCliente: "999",
+        cpfVendedor: "003",
+        valorCompra: 125.90,
+        dataHoraVenda: new Date("2022-04-28T18:59:51")
+    },
+    {
+        produtosVendidos: [
+            {codigo: "meiadmig", quantidadeVendida: 2},
+            {codigo: "tenmiin22", quantidadeVendida: 1},
+            {codigo: "chunica37", quantidadeVendida: 1}
+        ],
+        cpfCliente: "444",
+        cpfVendedor: "005",
+        valorCompra: 550.36,
+        dataHoraVenda: new Date("2022-04-28T20:15:21")
+    },
+    {
+        produtosVendidos: [
+            {codigo: "sanzabe38", quantidadeVendida: 1}
+        ],
+        cpfCliente: null,
+        cpfVendedor: "006",
+        valorCompra: 25.90,
+        dataHoraVenda: new Date("2019-11-30T13:19:58")
+    },
+    {
+        produtosVendidos: [
+            {codigo: "chadqu37", quantidadeVendida: 11},
+            {codigo: "sapadgr42", quantidadeVendida: 1},
+            {codigo: "meiadmip", quantidadeVendida: 11}
+        ],
+        cpfCliente: "451",
+        cpfVendedor: "002",
+        valorCompra: 3050.63,
+        dataHoraVenda: new Date("2022-05-08T18:21:29")
+    },
+    {
+        produtosVendidos: [
+            {codigo: "papgrse42", quantidadeVendida: 3},
+            {codigo: "sapadgr38", quantidadeVendida: 7},
+        ],
+        cpfCliente: "321",
+        cpfVendedor: "002",
+        valorCompra: 8573.62,
+        dataHoraVenda: new Date("2021-10-27T14:03:42")
+    },
+    {
+        produtosVendidos: [
+            {codigo: "sanzabe38", quantidadeVendida: 2},
+            {codigo: "tenalco37", quantidadeVendida: 2}
+        ],
+        cpfCliente: null,
+        cpfVendedor: "010",
+        valorCompra: 451.6,
+        dataHoraVenda: new Date("2022-04-21T20:20:30")
+    },
+    {
+        produtosVendidos: [
+            {codigo: "tenadsp41", quantidadeVendida: 1},
+            {codigo: "tenmiin22", quantidadeVendida: 1}
+        ],
+        cpfCliente: "240",
+        cpfVendedor: "011",
+        valorCompra: 1107.8,
+        dataHoraVenda: new Date("2022-05-16T16:40:18")
+    },
+    {
+        produtosVendidos: [
+            {codigo: "chupufu40", quantidadeVendida: 3},
+            {codigo: "meiadmim", quantidadeVendida: 3}
+        ],
+        cpfCliente: "078",
+        cpfVendedor: "012",
+        valorCompra: 1780.5,
+        dataHoraVenda: new Date("2022-04-29T17:20:19")
+    },
+    {
+        produtosVendidos: [
+            {codigo: "botcade40", quantidadeVendida: 3},
+            {codigo: "botcade36", quantidadeVendida: 5}
+        ],
+        cpfCliente: "921",
+        cpfVendedor: "010",
+        valorCompra: 6946.50,
+        dataHoraVenda: new Date('2022-05-04T13:32:44')
+    },
+    {
+        produtosVendidos: [
+            {codigo: "chunica40", quantidadeVendida: 2},
+            {codigo: "chihato33", quantidadeVendida: 2}
+        ],
+        cpfCliente: "870",
+        cpfVendedor: "004",
+        valorCompra: 704.92,
+        dataHoraVenda: new Date("2022-05-09T19:09:40")
+    },
+    {
+        produtosVendidos: [
+            {codigo: "botcade40", quantidadeVendida: 5}
+        ],
+        cpfCliente: "444",
+        cpfVendedor: "008",
+        valorCompra: 899.90,
+        dataHoraVenda: new Date('2022-07-24T11:59:59')
     }
 ]);
 

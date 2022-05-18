@@ -1,0 +1,155 @@
+// FIND:
+// vendedores cujo salario está entre 1000 e 1500 (inclusos)
+db.vendedor.find( {
+    $and: [
+        { "salario": { $geq: 1000}},
+        { "salario": { $leq: 1500}}
+    ]
+});
+
+// tipos de calçados disponíveis de menos de 350 reais
+db.calcados.find( {
+    "quantidadeEstoque": { $geq: 0 },
+    "preco": { $leq: 350 }
+});
+// SIZE: retorna as vendas em que foram vendidos exatamente 3 produtos diferentes
+db.venda.find({produtosVendidos: {$size: 3}}).pretty();
+
+// AGGREGATE, GROUP, SUM e SORT: 
+//   Retorna o total de vendas de cada vendedor em ordem decrescente dos valores totais
+/*  AGGREGATE -> Calculates aggregate values for the data in a collection or a view.
+ *  GROUP -> Groups input documents by the specified _id expression and for each 
+ *      distinct grouping, outputs a document.
+ *  SUM -> Calculates and returns the sum of numeric values. $sum ignores non-numeric values.
+ *  SORT -> The $sort modifier orders the elements of an array.
+ */
+db.venda.aggregate([
+    {
+        $group: {
+            _id: "$cpfVendedor",
+            valor_total: {
+                $sum: "$valorCompra"
+            }   
+        }
+    },
+    {
+        $sort : {
+            valor_total: -1 
+        } 
+    }
+]);
+
+//MATCH, COUNT:
+// Match: Filters the documents to pass only the documents that match the specified condition(s) to the next pipeline stage.
+// Count: Returns the count of documents that would match a find() query for the collection or view
+//Quantidade de calçados de tamanho 40 disponíveis na sapataria
+db.calcados.aggregate([{
+    $match:{tamanho:"40"}},
+    {$count:"Qt calçados tamanho 40"}]);
+
+// PROJECT e COND
+// Retorna os calçados com um novo campo para indicar se eles servem para o outfit ou não
+// Passes along the documents with the requested fields to the next stage in the pipeline. The $project takes a document that can specify the inclusion of fields, the suppression of the _id field, the addition of new fields, and the resetting of the values of existing fields.
+// 1 -> incluir ; 0 -> não incluir
+db.calcados.aggregate([
+    {
+        $project: {
+            tipo: 1,
+            marca: 1,
+            modelo: 1,
+            tamanho: 1,
+            preco: 1,
+            paraOutfit: {
+                $cond: {
+                    if: { $gte: ["$preco", 700]},
+                    then: "Outfit",
+                    else: "Não serve"
+                }
+            }
+        }
+    }
+]);
+
+//MAX, GROUP
+//MAX: Returns the maximum value.
+//GROUP: Groups input documents by the specified _id expression and for each distinct grouping, outputs a document
+//Retorna o valor da maior venda de cada vendedor
+db.venda.aggregate([
+    {$group:{
+        _id:"$cpfVendedor",
+         maiorVenda: {$max:"$valorCompra"}}},
+    {
+        $sort:{
+            _id: 1
+        }
+    }
+])
+
+
+// EXISTS E UPDATE MANY
+// Apagando o campo cpfCliente da collection venda para permitir usar o $exists: false para retornar os documentos que não possuem o cpf do cliente
+// EXISTS: When <boolean> is true, $exists matches the documents that contain the field, including documents where the field value is null. If <boolean> is false, the query returns only the documents that do not contain the field
+// UNSET: The $unset operator deletes a particular field
+// UPDATE MANY: updateMany() updates all matching documents in the collection that match the filter, using the update criteria to apply modifications.
+db.venda.updateMany({cpfCliente: null}, {$unset: {cpfCliente: null}});
+db.venda.find({cpfCliente: {$exists: false}}).pretty();
+
+// FILTER, AVG
+// Retorna quantidade de itens vendidos em compras onde a qt vendida foi maior que a média
+db.venda.aggregate([
+    {
+        $project: {
+            _id: 0,
+            produtosVendidos:{
+                $filter:{
+                    input:"$produtosVendidos",
+                    as: "item",
+                    cond: {$and: [
+                        {$gt:["$$item.quantidadeVendida",{$avg:"$produtosVendidos.quantidadeVendida"}]}, 
+                        {$ne: ["$produtosVendidos", "[]"]}
+                        ]}
+                }
+            }
+        }
+    }
+]);
+
+//
+
+db.venda.aggregate([
+    {
+    $project: {
+            produtosVendidos:{
+                $filter:{input:"$produtosVendidos", as: "item",
+                cond:{$gt:["$$item.quantidadeVendida",{$avg:"$produtosVendidos.quantidadeVendida"}]
+                }
+            }
+        }
+    }
+    }
+]);
+
+// $WHERE AND FUNCTION
+// Listar as vendas que o James Bond fez
+// WHERE: Use the $where operator to pass either a string containing a JavaScript expression or a full JavaScript function to the query system. The $where provides greater flexibility, but requires that the database processes the JavaScript expression or function for each document in the collection
+// FUNCTION: Defines a custom aggregation function or expression in JavaScript
+db.venda.find({$where: function() {
+    return (this.cpfVendedor == 007)
+}});
+
+// LIMIT
+// Listar os 5 calçados que estão com a menor quantidade em estoque
+// LIMIT: Limits the number of documents passed to the next stage in the pipeline.
+db.calcados.aggregate([
+    {
+        $project: {
+            _id: 0,
+            codigo: 1,
+            marca: 1,
+            modelo: 1,
+            quantidadeEstoque: 1
+        }
+    },
+    {$sort:{quantidadeEstoque:1}}, 
+    {$limit:5}
+]);
