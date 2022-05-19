@@ -359,6 +359,15 @@ db.calcados.insertMany([
         tamanho: "40",
         quantidadeEstoque: 10,
         preco: 450.00
+    },
+    {
+    codigo: "sangrin29",
+    tipo: "sandalia",
+    marca: "grendene kids",
+    modelo: "infantil homem-aranha",
+    tamanho: "29",
+    quantidadeEstoque: 30,
+    preco: 37.55
     }
 ]);
 

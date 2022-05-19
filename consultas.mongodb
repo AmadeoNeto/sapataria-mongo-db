@@ -103,7 +103,8 @@ db.venda.find({cpfCliente: {$exists: false}}).pretty();
                 _id:0,
                 produtosVendidos:{
                     $filter:{
-                        input:"$produtosVendidos", as: "item",
+                        input:"$produtosVendidos",
+                        as: "item",
                         cond:{$gt:["$$item.quantidadeVendida",{$avg:"$produtosVendidos.quantidadeVendida"}]}
                     }
                 }
@@ -140,3 +141,82 @@ db.calcados.aggregate([
     {$sort:{quantidadeEstoque:1}}, 
     {$limit:5}
 ]);
+
+//SET
+//The $set operator replaces the value of a field with the specified value.
+//Atualiza o salário dos trabalhadores para serem todos ao menos um salário mínimo
+db.vendedor.updateMany(
+    {"salario":{$lt: 1212.00}},
+    {$set: {"salario":1212.00}}
+);
+
+//Índice necessário para se usar o operador $text
+db.calcados.createIndex({modelo:"text"})
+
+//TEXT e SEARCH
+//$text performs a text search on the content of the fields indexed with a text index
+//Retorna modelo, tipo, tamanho e preço dos calçados infantis da loja
+db.calcados.find(
+    {$text:{ $search: "infantil"}},
+    {_id:0, modelo:1, tipo:1, tamanho:1, preco:1},
+)
+
+//LOOKUP
+//Performs a left outer join
+//Informações sobre o vendedor e o valor total que ele já vendeu na loja
+db.vendedor.aggregate([
+    {
+        $lookup: {
+          from: 'venda',
+          localField: 'cpf',
+          foreignField: 'cpfVendedor',
+          as: 'vendas'
+        }
+    },
+    {
+        $project: {
+            _id:0,
+            cpf: 1,
+            nome:1,
+            totalVendido: {$trunc: [{$sum:"$vendas.valorCompra"},2]}
+        }  
+    }
+])
+
+//NumeroDeVendasNoMes: atributo derivado
+//Informações sobre o vendedor e o valor total que ele vendeu na loja no mês atual
+db.vendedor.aggregate([
+    {
+        $lookup: {
+          from: 'venda',
+          localField: 'cpf',
+          foreignField: 'cpfVendedor',
+          as: 'vendas'
+        }
+    },
+    {
+        $project:{
+            _id:0,
+            cpf: 1,
+            nome:1,
+            vendasMes:{
+                $filter:{
+                    input:"$vendas",
+                    as: "venda",
+                    cond:{$and:[
+                        {$eq:[{$year:"$$venda.dataHoraVenda"}, {$year:new Date()}]},
+                        {$eq:[{$month:"$$venda.dataHoraVenda"},{$month:new Date()}]}
+                    ]}
+                }
+            }
+        } 
+    },
+    {
+        $project: {
+            _id:0,
+            cpf: 1,
+            nome:1,
+            numeroDeVendasNoMes: {$trunc: [{$sum:"$vendasMes.valorCompra"},2]}
+        }  
+    }
+])
