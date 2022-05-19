@@ -9,9 +9,10 @@ db.vendedor.find( {
 
 // tipos de calçados disponíveis de menos de 350 reais
 db.calcados.find( {
-    "quantidadeEstoque": { $gte: 0 },
+    "quantidadeEstoque": { $gt: 0 },
     "preco": { $lte: 350 }
 });
+
 // SIZE: retorna as vendas em que foram vendidos exatamente 3 produtos diferentes
 db.venda.find({produtosVendidos: {$size: 3}}).pretty();
 
@@ -91,6 +92,7 @@ db.venda.aggregate([
 // EXISTS: When <boolean> is true, $exists matches the documents that contain the field, including documents where the field value is null. If <boolean> is false, the query returns only the documents that do not contain the field
 // UNSET: The $unset operator deletes a particular field
 // UPDATE MANY: updateMany() updates all matching documents in the collection that match the filter, using the update criteria to apply modifications.
+// PRETTY
 db.venda.updateMany({cpfCliente: null}, {$unset: {cpfCliente: null}});
 db.venda.find({cpfCliente: {$exists: false}}).pretty();
 
@@ -228,7 +230,8 @@ db.vendedor.aggregate([
 */
 
 // -- Save -> insere/cria um documento de acordo com os atributos do documento.
-/* db.venda.save(
+/* 
+db.venda.save(
     {
         produtosVendidos: [
             {codigo: "tenmiin22", quantidadeVendida: 1},
@@ -239,7 +242,8 @@ db.vendedor.aggregate([
         valorCompra: 1367.90,
         dataHoraVenda: new Date(Date.now())
     }
-) */
+)
+*/
 
 
 
