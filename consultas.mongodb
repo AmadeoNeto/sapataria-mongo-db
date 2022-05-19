@@ -267,9 +267,12 @@ db.venda.updateOne(
     {_id:db.venda.findOne(
         {
             dataHoraVenda: new Date("2021-02-14T14:27:00"), 
-            produtosVendidos:{
-                $all: [[{codigo: "sanhaun39", quantidadeVendida: 1}]]
-            }
+            $or: [
+                {produtosVendidos:{
+                    $all: [[{codigo: "sanhaun39", quantidadeVendida: 1}]]
+                }},
+                {cpfVendedor: "013"}
+            ]
         },
         {_id:1}
     )._id},
@@ -291,9 +294,7 @@ db.venda.updateOne(
                                 db.venda.findOne(
                                             {
                                                 dataHoraVenda: new Date("2021-02-14T14:27:00"), 
-                                                produtosVendidos:{
-                                                    $all: [[{'codigo': "sanhaun39", 'quantidadeVendida': 1}]]
-                                                }
+                                                cpfVendedor: "013"
                                             },
                                             {valorCompra:1}
                                         ).valorCompra,
