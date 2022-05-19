@@ -8,6 +8,9 @@ db.vendedor.drop();
 
 db.venda.drop();
 
+// coleção criada pelo mapReduce
+db.somaSalariosAtivos.drop();
+
 // Cria a coleção de calçados
 // db.calcados.insertOne({
 //     codigo: "tenalco37", 
@@ -289,7 +292,7 @@ db.calcados.insertMany([
         preco: 759.99
     }, 
     {
-        codigo: "tenolae44",
+        codigo: "teolae44",
         tipo: "tenis",
         marca: "olympikus",
         modelo: "aeros",
@@ -298,7 +301,7 @@ db.calcados.insertMany([
         preco: 289.99
     }, 
     {
-        codigo: "tenolae42",
+        codigo: "teolae42",
         tipo: "tenis",
         marca: "olympikus",
         modelo: "aeros",
@@ -379,91 +382,104 @@ db.vendedor.insertMany([
         cpf: "001",
         nome: "Kisho Murakami Inoue",
         dataEntrada: new Date("2018-12-31"),
-        salario: 1500.00
+        salario: 1500.00,
+        status: "ativo"
     },
     
     {
         cpf: "002",
         nome: "Aozora Mitsuhide",
         dataEntrada: new Date("1982-01-02"),
-        salario: 3350.00
+        salario: 3350.00,
+        status: "ativo"
     },
     
     {
         cpf: "003",
         nome: "Claurêncio Roberto de Azevedo",
         dataEntrada: new Date("2014-04-25"),
-        salario: 1200.00
+        salario: 1200.00,
+        status: "ativo"
     },
 
     {
         cpf: "004",
         nome: "Tanji Hatsune",
         dataEntrada: new Date("2020-04-25"),
-        salario: 1400.00
+        salario: 1400.00,
+        status: "ativo"
     },
 
     {
         cpf: "005",
         nome: "Meliquiades Rosa e Silva",
         dataEntrada: new Date("2017-10-12"),
-        salario: 1400.00
+        salario: 1400.00,
+        status: "ativo"
     },
 
     {
         cpf: "006",
         nome: "Calisto Alberto Felônio",
         dataEntrada: new Date("2019-02-28"),
-        salario: 1450.00
+        salario: 1450.00,
+        status: "ativo"
     },
 
     {
         cpf: "007",
         nome: "James Bond",
         dataEntrada: new Date("1953-04-07"),
-        salario: 7777.77
+        salario: 7777.77,
+        status: "desligado"
     },
 
     {
         cpf: "008",
         nome: "Hiran Delmar",
         dataEntrada: new Date("2004-12-07"),
-        salario: 1380.00
+        salario: 1380.00,
+        status: "ativo"
     },
 
     {
         cpf: "009",
         nome: "João Alberto",
         dataEntrada: new Date("2003-12-08"),
-        salario: 1200.00
+        salario: 1200.00,
+        status: "ativo"
     },
 
     {
         cpf: "010",
         nome: "Kawada Manami",
         dataEntrada: new Date("1945-06-02"),
-        salario: 10000.00
+        salario: 10000.00,
+        status: "desligado"
     },
 
     {
         cpf: "011",
         nome: "Senor Firmino Olimar",
         dataEntrada: new Date("2009-10-04"),
-        salario: 999.99
+        salario: 999.99,
+        status: "desligado"
     },
 
     {
         cpf: "012",
         nome: "Klaus Andrade Filho",
         dataEntrada: new Date("1955-12-24"),
-        salario: 1500.00
+        salario: 1500.00,
+        status: "ativo"
     },
 
     {
         cpf: "013",
         nome: "Orlando Uóshinton",
         dataEntrada: new Date("2012-05-28"),
-        salario: 2000.00
+        salario: 2000.00,
+        status: "ativo"
     }
 ]);
 
