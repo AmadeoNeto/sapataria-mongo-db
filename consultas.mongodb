@@ -358,3 +358,42 @@ db.somaSalariosAtivos.findOne(
         _id:"ativo"
     }
 );
+
+//Função de agregação ($function)
+//$function: Defines a custom aggregation function or expression in JavaScript.
+// Gera uma mensagem com o cliente, o valor da compra e a data da compra formatados para 
+// cada venda na loja
+db.venda.aggregate([
+    {
+        $project: {
+            _id:0,
+            message:{
+              $function:{
+                body: function(cpfCliente,valorCompra,dataHoraVenda) {
+                    let txt = "O cliente de cpf "
+                    if (cpfCliente) {
+                        txt += cpfCliente
+                    } else {
+                        txt += "não informado"
+                    }
+                    let dia = dataHoraVenda.getDate()
+                    let mes = dataHoraVenda.getMonth()
+                    if(dia < 10){
+                        dia = "0" + dia
+                    }
+                    if(mes < 10){
+                        mes = "0" + mes
+                    }
+
+                    let data = dia + "/" + mes + "/" + dataHoraVenda.getFullYear() 
+
+                    txt += " comprou R$" + valorCompra +" em produtos no dia " + data
+                    return txt
+                },
+                args: ["$cpfCliente","$valorCompra","$dataHoraVenda"],
+                lang: "js"
+              }
+          }
+        }
+    }
+]);
