@@ -313,10 +313,6 @@ db.venda.updateOne(
 
 /* 
     RENAMECOLLECTION -> É um operador que serve para renomear o nome de uma dada começão
-
-    Descrição Função: 
-            O adm michael scott quis mudar o nome da coleção Vendedor para Familia,
-            mas percebeu que era uma má ideia e voltou atrás
 */
 db.vendedor.renameCollection("familia");
 db.familia.renameCollection("vendedor");
@@ -327,11 +323,8 @@ db.familia.renameCollection("vendedor");
                 Ou seja, ela basicamente nos permite condensar um grande volume de dados em resultados agregados "úteis"
 
     Descrição função:
-        A senhorita deide costa gostaria de saber quanto ela investe ao todo
-        com os salarios dos funcionários ativos. E perpicaz como sempre foi, ela decide fazer por mapReduce.
-
-        Infelizmente ela não sabe que o mapReduction vai ficar deprecated 
-        na versão 5 do mongodb, ou seja o banco de dados dela vai quebrar em algum momento.
+        Saber quanto é investido ao todo com o salário dos funcionários ativos
+        Nota: o mapReduction vai ficar deprecated na versão 5 do mongodb
     
 */
 // definindo funções js de map e de Reduction
